@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CertificateService } from '../services/dataService';
 import { Certificate, CertificateStatus } from '../types';
@@ -215,12 +216,15 @@ export const CertificateEditor: React.FC = () => {
         </div>
       </div>
 
-      {/* Hidden Print Section - Only visible to browser print engine */}
-      <div className="hidden print-only fixed top-0 left-0 w-full h-full z-[9999] bg-white">
-         <div className="print-fit-a4">
-            <CertificateRender data={formData} />
-         </div>
-      </div>
+      {/* Hidden Print Section - Injected via Portal to escape Layout's no-print wrapper */}
+      {createPortal(
+        <div className="hidden print-only fixed top-0 left-0 w-full h-full z-[9999] bg-white">
+           <div className="print-fit-a4">
+              <CertificateRender data={formData} />
+           </div>
+        </div>,
+        document.body
+      )}
 
     </div>
   );

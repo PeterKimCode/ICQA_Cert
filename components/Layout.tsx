@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate, Outlet } from 'react-router-dom';
-import { ShieldCheck, Users, LogOut, Home, PlusCircle } from 'lucide-react';
+import { ShieldCheck, Users, LogOut, Home, PlusCircle, Settings } from 'lucide-react';
 import { useAuth } from '../App';
 import { UserRole } from '../types';
 
@@ -42,6 +42,14 @@ export const Layout: React.FC = () => {
             <PlusCircle className="w-5 h-5" />
             Issue Certificate
           </NavLink>
+
+          <div className="pt-4 mt-2 border-t border-slate-800">
+            <NavLink to="/profile" 
+              className={({isActive}) => `flex items-center gap-3 px-4 py-3 rounded-md transition-colors ${isActive ? 'bg-blue-700 text-white' : 'text-slate-300 hover:bg-slate-800'}`}>
+              <Settings className="w-5 h-5" />
+              My Profile
+            </NavLink>
+          </div>
 
           {user.role === UserRole.ADMIN && (
             <div className="mt-8 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">

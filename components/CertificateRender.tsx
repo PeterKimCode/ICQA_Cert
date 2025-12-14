@@ -13,8 +13,9 @@ export const CertificateRender: React.FC<Props> = ({ data, isPreview = false }) 
   const BASE_HEIGHT = 1748;
 
   // --- COORDINATE CONFIGURATION (Anchor: Top-Left) ---
-  const LABEL_X = 340; 
-  const VALUE_X = 740;
+  // Adjusted to equalize margins: (2480 - 1680) / 2 = 400px margin on each side.
+  const LABEL_X = 400; 
+  const VALUE_X = 800;
   
   // --- FONT SIZING UPDATES ---
   // Increased by ~2px (1 step) as requested
@@ -28,7 +29,7 @@ export const CertificateRender: React.FC<Props> = ({ data, isPreview = false }) 
   const LEADING_NORMAL = "30px"; 
   const LEADING_DOUBLE = "34px"; 
 
-  // Max width for fields - Reduced to 760px to avoid hitting the photo at x=1600
+  // Max width for fields - Reduced to 760px to avoid hitting the photo at x=1660
   const MAX_TEXT_WIDTH = '760px';
 
   // --- COMPACT ROW POSITIONS ---
@@ -84,12 +85,12 @@ export const CertificateRender: React.FC<Props> = ({ data, isPreview = false }) 
         </span>
       </div>
 
-      {/* Row 2: Name (Blue, Bold) */}
+      {/* Row 2: Name (Black, Bold) */}
       <div className="absolute z-[10]" style={{ top: `${ROW_2_Y}px`, left: `${LABEL_X}px` }}>
         <span className="font-serif font-bold text-gray-600 block leading-none" style={{ fontSize: FONT_LABEL }}>Name :</span>
       </div>
       <div className="absolute z-[10]" style={{ top: `${ROW_2_Y}px`, left: `${VALUE_X}px`, width: MAX_TEXT_WIDTH, height: '34px' }}>
-        <span className="font-serif font-bold text-icqa-blue uppercase truncate block" style={{ fontSize: FONT_NAME, lineHeight: LEADING_NORMAL }}>
+        <span className="font-serif font-bold text-black uppercase truncate block" style={{ fontSize: FONT_NAME, lineHeight: LEADING_NORMAL }}>
           {data.name}
         </span>
       </div>
@@ -114,12 +115,12 @@ export const CertificateRender: React.FC<Props> = ({ data, isPreview = false }) 
         </span>
       </div>
 
-      {/* Row 5: Qualification Type (Blue) */}
+      {/* Row 5: Qualification Type (Black) */}
       <div className="absolute z-[10]" style={{ top: `${ROW_5_Y}px`, left: `${LABEL_X}px` }}>
         <span className="font-serif font-bold text-gray-600 block leading-none" style={{ fontSize: FONT_LABEL }}>Qualification type :</span>
       </div>
       <div className="absolute z-[10]" style={{ top: `${ROW_5_Y}px`, left: `${VALUE_X}px`, width: MAX_TEXT_WIDTH, height: '34px' }}>
-        <span className="font-serif font-bold text-icqa-blue truncate block" style={{ fontSize: FONT_VALUE, lineHeight: LEADING_NORMAL }}>
+        <span className="font-serif font-bold text-black truncate block" style={{ fontSize: FONT_VALUE, lineHeight: LEADING_NORMAL }}>
           {data.qualificationType}
         </span>
       </div>
@@ -134,32 +135,32 @@ export const CertificateRender: React.FC<Props> = ({ data, isPreview = false }) 
         </span>
       </div>
 
-      {/* Row 7: Education Dept (Blue) */}
+      {/* Row 7: Education Dept (Black) */}
       <div className="absolute z-[10]" style={{ top: `${ROW_7_Y}px`, left: `${LABEL_X}px` }}>
         <span className="font-serif font-bold text-gray-600 block leading-none" style={{ fontSize: FONT_LABEL }}>Education Department :</span>
       </div>
       <div className="absolute z-[10]" style={{ top: `${ROW_7_Y}px`, left: `${VALUE_X}px`, width: MAX_TEXT_WIDTH, height: '40px' }}>
-        <span className="font-serif font-bold text-icqa-blue block line-clamp-1" style={{ fontSize: FONT_VALUE, lineHeight: LEADING_NORMAL }}>
+        <span className="font-serif font-bold text-black block line-clamp-1" style={{ fontSize: FONT_VALUE, lineHeight: LEADING_NORMAL }}>
           {data.eduDept}
         </span>
       </div>
 
-      {/* Row 8: Issuing Office (Blue) */}
+      {/* Row 8: Issuing Office (Black) */}
       <div className="absolute z-[10]" style={{ top: `${ROW_8_Y}px`, left: `${LABEL_X}px` }}>
         <span className="font-serif font-bold text-gray-600 block leading-none" style={{ fontSize: FONT_LABEL }}>Issuing Office :</span>
       </div>
       <div className="absolute z-[10]" style={{ top: `${ROW_8_Y}px`, left: `${VALUE_X}px`, width: MAX_TEXT_WIDTH, height: '40px' }}>
-        <span className="font-serif font-bold text-icqa-blue block line-clamp-1" style={{ fontSize: FONT_VALUE, lineHeight: LEADING_NORMAL }}>
+        <span className="font-serif font-bold text-black block line-clamp-1" style={{ fontSize: FONT_VALUE, lineHeight: LEADING_NORMAL }}>
           {data.issuingOffice}
         </span>
       </div>
 
-      {/* Row 9: Issuing Country (Blue) */}
+      {/* Row 9: Issuing Country (Black) */}
       <div className="absolute z-[10]" style={{ top: `${ROW_9_Y}px`, left: `${LABEL_X}px` }}>
         <span className="font-serif font-bold text-gray-600 block leading-none" style={{ fontSize: FONT_LABEL }}>Issuing Country :</span>
       </div>
       <div className="absolute z-[10]" style={{ top: `${ROW_9_Y}px`, left: `${VALUE_X}px`, width: '500px', height: '34px' }}>
-        <span className="font-serif font-bold text-icqa-blue block" style={{ fontSize: FONT_VALUE, lineHeight: LEADING_NORMAL }}>
+        <span className="font-serif font-bold text-black block" style={{ fontSize: FONT_VALUE, lineHeight: LEADING_NORMAL }}>
           {data.issuingCountry}
         </span>
       </div>
@@ -187,11 +188,12 @@ export const CertificateRender: React.FC<Props> = ({ data, isPreview = false }) 
 
       {/* ------------------------------------------------------------
           3. PHOTO ZONE (Z-Index: 20)
-          y: 420 (Same start), w: 420, h: 520 (Ends at y=940)
+          y: 464 (Starts at Row 2 Name), w: 420, h: 430 (Ends at y=894 approx)
+          Shifted x from 1600 to 1660
       ------------------------------------------------------------ */}
       <div 
         className="absolute z-[20] bg-gray-50 flex items-center justify-center overflow-hidden"
-        style={{ top: '420px', left: '1600px', width: '420px', height: '520px' }}
+        style={{ top: '464px', left: '1660px', width: '420px', height: '430px' }}
       >
         {data.photoUrl ? (
           <img src={data.photoUrl} alt="Recipient" className="w-full h-full object-cover" />
@@ -205,8 +207,8 @@ export const CertificateRender: React.FC<Props> = ({ data, isPreview = false }) 
           4. PARAGRAPH (BODY) ZONE (Z-Index: 10)
           Moved to 960px to clear the Photo (which ends at 940px)
           Width matched to content boundaries:
-            Left: 340px (Same as Labels)
-            Right: 2020px (Same as Photo end)
+            Left: 400px (Label X)
+            Right: 2080px (Photo end: 1660 + 420)
             Total Width: 1680px
           Height increased to 450px to prevent truncation
       ------------------------------------------------------------ */}
@@ -214,7 +216,7 @@ export const CertificateRender: React.FC<Props> = ({ data, isPreview = false }) 
         className="absolute z-[10] text-center font-serif text-gray-700"
         style={{ 
           top: '960px', 
-          left: '340px', 
+          left: '400px', 
           width: '1680px',
           height: '450px', 
           fontSize: FONT_PARAGRAPH,
