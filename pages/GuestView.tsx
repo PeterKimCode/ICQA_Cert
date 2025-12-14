@@ -48,9 +48,9 @@ export const GuestView: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="py-8 flex justify-center no-print overflow-x-auto">
-        <div className="shadow-2xl">
-          {/* Render at full size but scale down via CSS if viewport is small, or scroll */}
+      <div className="py-8 flex justify-center no-print overflow-auto">
+        {/* Scale down slightly for viewability on common screens, or scroll */}
+        <div className="shadow-2xl origin-top transform scale-50 md:scale-75 lg:scale-100">
           <CertificateRender data={cert} />
         </div>
       </div>

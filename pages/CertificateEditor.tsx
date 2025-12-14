@@ -204,13 +204,13 @@ export const CertificateEditor: React.FC = () => {
         </form>
       </div>
 
-      {/* Preview Section */}
+      {/* Preview Section - Adjusted for 2480px width */}
       <div className="lg:col-span-8 bg-gray-200 rounded-xl p-8 flex flex-col items-center justify-center min-h-[600px] overflow-auto no-print">
         <div className="mb-4 text-gray-500 font-medium flex items-center gap-2">
            Live Preview (Scaled)
         </div>
-        {/* We wrap the render in a div that handles the scaling logic */}
-        <div className="relative" style={{ width: '1123px', height: '794px', transform: 'scale(0.65)', transformOrigin: 'top center' }}>
+        {/* We use scale(0.3) because 2480 * 0.3 = 744px, which fits in the column */}
+        <div className="relative" style={{ width: '2480px', height: '1748px', transform: 'scale(0.3)', transformOrigin: 'top center' }}>
            <CertificateRender data={formData} isPreview={false} />
         </div>
       </div>
