@@ -29,8 +29,8 @@ export const CertificateRender: React.FC<Props> = ({ data, isPreview = false }) 
   const LEADING_NORMAL = "30px"; 
   const LEADING_DOUBLE = "34px"; 
 
-  // Max width for fields - Reduced to 760px to avoid hitting the photo at x=1660
-  const MAX_TEXT_WIDTH = '760px';
+  // Max width for fields - Increased to 840px to utilize space before photo (1660 - 800 = 860)
+  const MAX_TEXT_WIDTH = '840px';
 
   // --- COMPACT ROW POSITIONS ---
   // Uniform spacing for ALL rows to ensure consistent padding
@@ -85,12 +85,12 @@ export const CertificateRender: React.FC<Props> = ({ data, isPreview = false }) 
         </span>
       </div>
 
-      {/* Row 2: Name (Black, Bold) */}
+      {/* Row 2: Name (Black, Bold) - Height Increased to prevent clipping */}
       <div className="absolute z-[10]" style={{ top: `${ROW_2_Y}px`, left: `${LABEL_X}px` }}>
         <span className="font-serif font-bold text-gray-600 block leading-none" style={{ fontSize: FONT_LABEL }}>Name :</span>
       </div>
-      <div className="absolute z-[10]" style={{ top: `${ROW_2_Y}px`, left: `${VALUE_X}px`, width: MAX_TEXT_WIDTH, height: '34px' }}>
-        <span className="font-serif font-bold text-black uppercase truncate block" style={{ fontSize: FONT_NAME, lineHeight: LEADING_NORMAL }}>
+      <div className="absolute z-[10]" style={{ top: `${ROW_2_Y - 5}px`, left: `${VALUE_X}px`, width: MAX_TEXT_WIDTH, height: '50px' }}>
+        <span className="font-serif font-bold text-black uppercase truncate block" style={{ fontSize: FONT_NAME, lineHeight: '45px' }}>
           {data.name}
         </span>
       </div>
