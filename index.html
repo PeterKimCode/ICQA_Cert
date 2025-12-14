@@ -29,9 +29,27 @@
     <style>
       @media print {
         @page { size: landscape; margin: 0; }
-        body { -webkit-print-color-adjust: exact; }
+        body { margin: 0; padding: 0; -webkit-print-color-adjust: exact; }
         .no-print { display: none !important; }
         .print-only { display: block !important; }
+        
+        /* 
+           Scaling for A4 Landscape
+           A4 Width (297mm) @ 96 DPI approx 1122px.
+           Source Width: 2480px.
+           Scale Factor: 1122 / 2480 approx 0.45.
+           Using 0.44 to be safe with printer margins.
+        */
+        .print-fit-a4 {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 2480px !important;
+           height: 1748px !important;
+           transform: scale(0.44) !important; 
+           transform-origin: top left !important;
+           overflow: visible !important;
+        }
       }
     </style>
   <script type="importmap">

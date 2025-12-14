@@ -57,7 +57,7 @@ export const GuestView: React.FC = () => {
 
       {/* Print View */}
       <div className="hidden print-only fixed top-0 left-0 w-full h-full bg-white z-[9999]">
-         <div className="flex items-center justify-center w-full h-full">
+         <div className="print-fit-a4">
             <CertificateRender data={cert} />
          </div>
       </div>

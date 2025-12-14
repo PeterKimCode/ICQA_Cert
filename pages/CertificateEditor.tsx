@@ -217,7 +217,7 @@ export const CertificateEditor: React.FC = () => {
 
       {/* Hidden Print Section - Only visible to browser print engine */}
       <div className="hidden print-only fixed top-0 left-0 w-full h-full z-[9999] bg-white">
-         <div className="flex items-center justify-center w-full h-full">
+         <div className="print-fit-a4">
             <CertificateRender data={formData} />
          </div>
       </div>
